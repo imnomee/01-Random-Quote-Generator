@@ -1,2 +1,2 @@
-# degree-project-3
+# Techdegree Project 3
  Random Quote Generator
