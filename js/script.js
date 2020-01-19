@@ -19,7 +19,8 @@ let quotes = [
   },
   {
     quote: "The way to get started is to quit talking and begin doing.",
-    source: "Walt Disney"
+    source: "Walt Disney",
+    tag: 'twitter'
   },
   {
     quote: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
@@ -34,11 +35,13 @@ let quotes = [
     quote: "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
     source: "Oprah Winfrey",
     citation: "facebook",
+    tag: "facebook"
   },
   {
     quote: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
     source: "James Cameron",
     citation: "Twitter",
+    tag: 'twitter',
     year: 2015
   },
   {
@@ -50,11 +53,13 @@ let quotes = [
   {
     quote: "It is during our darkest moments that we must focus to see the light.",
     source: "Aristotle Onassis",
+    tag: "facebook",
 
   },
   {
     quote: "Don't judge each day by the harvest you reap but by the seeds that you plant.",
     source: "JRobert Louis Stevenson",
+    tag: 'twitter'
 
   },
   {
@@ -72,25 +77,25 @@ let quotes = [
   {
     quote: "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.",
     source: "Jimmy Dean",
-
+    tag: 'facebook',
     year: 2012
   },
 
 
 ];
 
-
-
-
-
 /***
  * `getRandomQuote` function
 ***/
 
 function getRandomQuote() {
+
+  //Generate random number
   var randNumber = Math.floor(Math.random() * quotes.length);
   console.log(randNumber);
 
+
+  // Return Quote using the random number
   return quotes[randNumber];
 
 
@@ -100,15 +105,39 @@ console.log(getRandomQuote());
 
 
 /***
+ * 
+ * change background colour
+ * 
+ */
+
+function randomColorGenerator() {
+
+  var color = Math.floor(Math.random() * 255) + 1;
+  return color;
+
+
+
+}
+
+function changeBGColor() {
+  /* Found this method from: 
+  https://www.tutorialrepublic.com/faq/how-to-change-the-background-color-of-a-web-page-using-javascript.php
+  */
+  document.body.style.background = 'rgb(' + randomColorGenerator() + ',' + randomColorGenerator() + ',' + randomColorGenerator() + ')';
+
+  /* following works as well
+  //document.body.style.background = 'yellow'; 
+  */
+
+}
+
+/***
  * `printQuote` function
 ***/
 
 function printQuote() {
 
-  var quote = getRandomQuote();
-
-
-
+  var quote = getRandomQuote(); // Get random quote and assign it to new object
   var html = '<p class="quote">' + quote.quote + '</p>';
   html += '<p class="source">' + quote.source + ' ';
 
@@ -123,10 +152,24 @@ function printQuote() {
   if ('year' in quote) {
     html += '<span class="year">' + quote.year + '</span>';
   }
+
+  // Adding tag property
+  if ('tag' in quote) {
+    html += '<span class="tag">' + quote.tag + '</span>';
+
+  }
   html += '</p>';
 
 
+  /* setTimeout function added to refresh page every 10 seconds
+  ** found this code from:
+  ** https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+  */
+  setTimeout(() => {
+    location.reload(1);
+  }, 10000);
   document.getElementById('quote-box').innerHTML = html;
+  changeBGColor();
   return html;
 
 }
