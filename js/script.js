@@ -145,16 +145,17 @@ function printQuote() {
   https://stackoverflow.com/questions/135448/how-do-i-check-if-an-object-has-a-specific-property-in-javascript
   */
 
-  if ('citation' in quote) {
+  //if ('citation' in quote) {
+    if(quote.citation){
     html += '<span class="citation">' + quote.citation + '</span>';
   }
 
-  if ('year' in quote) {
+  if (quote.year) {
     html += '<span class="year">' + quote.year + '</span>';
   }
 
   // Adding tag property
-  if ('tag' in quote) {
+  if (quote.tag) {
     html += '<span class="tag">' + quote.tag + '</span>';
 
   }
