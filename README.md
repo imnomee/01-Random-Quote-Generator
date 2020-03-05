@@ -8,5 +8,3 @@ This project holds dynamic values for timing and quotes.
 We can update the timing (in seconds) and add any number of quotes
 without changing the total number or any other quote to update the time.
 
-This was the first project, created during the Unit 01 of TeamTreeHouse Techdegree course.
-
